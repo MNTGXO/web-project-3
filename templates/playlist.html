@@ -1,0 +1,87 @@
+<!-- templates/playlist.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Video Playlist</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #111;
+            color: #fff;
+            margin: 0;
+            padding: 20px;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        h1 {
+            color: #4CAF50;
+        }
+        .videos-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+            gap: 20px;
+        }
+        .video-card {
+            background: #222;
+            border-radius: 8px;
+            overflow: hidden;
+            transition: transform 0.3s;
+        }
+        .video-card:hover {
+            transform: translateY(-5px);
+        }
+        .video-thumb {
+            width: 100%;
+            height: 160px;
+            object-fit: cover;
+        }
+        .video-info {
+            padding: 15px;
+        }
+        .video-title {
+            font-weight: bold;
+            margin-bottom: 5px;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+        .video-date {
+            color: #aaa;
+            font-size: 0.9rem;
+        }
+        .play-button {
+            display: block;
+            width: 100%;
+            padding: 8px;
+            background: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            text-align: center;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Video Playlist</h1>
+        <div class="videos-grid">
+            {% for video in videos %}
+            <div class="video-card">
+                <img src="{{ video.thumbnail }}" alt="{{ video.file_name }}" class="video-thumb">
+                <div class="video-info">
+                    <div class="video-title">{{ video.file_name }}</div>
+                    <div class="video-date">{{ video.added_at.strftime('%Y-%m-%d %H:%M') }}</div>
+                    <a href="/player/{{ video._id }}" class="play-button">Play Video</a>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</body>
+</html>
