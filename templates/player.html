@@ -1,0 +1,39 @@
+<!-- templates/player.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ video.file_name }} - Video Player</title>
+    <link href="https://vjs.zencdn.net/7.15.4/video-js.css" rel="stylesheet">
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background: #000;
+        }
+        .player-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            height: 100vh;
+        }
+    </style>
+</head>
+<body>
+    <div class="player-container">
+        <video id="player" class="video-js vjs-default-skin vjs-big-play-centered" controls autoplay>
+            <source src="/video/{{ video._id }}" type="video/mp4">
+            <p class="vjs-no-js">
+                To view this video please enable JavaScript, and consider upgrading to a
+                web browser that supports HTML5 video
+            </p>
+        </video>
+    </div>
+
+    <script src="https://vjs.zencdn.net/7.15.4/video.min.js"></script>
+    <script>
+        const player = videojs('player');
+        player.play();
+    </script>
+</body>
+</html>
