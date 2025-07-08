@@ -1,0 +1,8 @@
+# requirements.txt
+flask
+pymongo
+dnspython
+python-dotenv
+python-telegram-bot
+requests
+gunicorn
