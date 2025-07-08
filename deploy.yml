@@ -1,0 +1,19 @@
+# deploy.yml (for Sevalla/Koyeb)
+name: video-tv
+services:
+  - name: app
+    image: koyeb/app:latest
+    ports:
+      - port: 80
+        http_path: /
+    env:
+      - name: MONGO_URI
+        value: mongodb+srv://user:pass@cluster.mongodb.net/dbname?retryWrites=true&w=majority
+      - name: TELEGRAM_TOKEN
+        value: your_telegram_bot_token
+      - name: CHANNEL_NAME
+        value: '@your_channel_name'
+      - name: WEBSITE_URL
+        value: 'https://your-domain.com'
+      - name: ADMIN_ID
+        value: 'your_user_id'
